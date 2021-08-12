@@ -1,0 +1,31 @@
+{
+  "name": "abstract-events",
+  "version": "0.0.1-alpha",
+  "description": "Abstract events in js",
+  "main": "abstract-events.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachnology/abstract-events.git"
+  },
+  "keywords": [
+    "event",
+    "event-handling",
+    "abstract"
+  ],
+  "author": "zachnology",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zachnology/abstract-events/issues"
+  },
+  "homepage": "https://github.com/zachnology/abstract-events#readme",
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "jquery": "^3.6.0"
+  },
+  "dependencies": {
+    "keycode": "^2.2.0"
+  }
+}
