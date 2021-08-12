@@ -1,6 +1,6 @@
 {
   "name": "abstract-events",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "description": "Abstract events in js",
   "main": "abstract-events.js",
   "scripts": {
