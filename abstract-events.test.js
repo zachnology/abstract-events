@@ -35,20 +35,19 @@ describe('Abstract click events', () => {
             let countListener = abs.create({
                 type: 'count',
                 count: 3,
-                setTimeout: 1000
+                timeout: 1000
             },() => testCounter++);
         
             $('#button').on('click', countListener);
-            
             $('#button').trigger('click');
             
             setTimeout(() => {
                 $('#button').trigger('click');
                 $('#button').trigger('click');
-                $('#button').trigger('click');
-                expect(testCounter).toBe(1);
+                expect(testCounter).toBe(0);
                 done();
-            }, 2000);
+            }, 1500);
+
         });
     });
 });
