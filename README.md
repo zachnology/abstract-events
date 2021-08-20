@@ -1,9 +1,9 @@
-# Welcome to abstract-events ⚡
+# ⚡ abstract-events ⚡
 ![Version](https://github.com/zachnology/abstract-events/actions/workflows/npm-publish.yml/badge.svg)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/zachnology/abstract-events/graphs/commit-activity)
 [![License: MIT](https://img.shields.io/github/license/zachnology/z-debouncer)](https://github.com/zachnology/abstract-events/blob/master/LICENSE)
 
-> Abstract events in JS
+### [Live Demo](https://zachnology.github.io/abstract-events-website/)
 
 ## Install
 
