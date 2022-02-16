@@ -71,7 +71,7 @@ function createTimedKeyPhraseListener(phrase, timeout, callback) {
         buffer.push({ keycode: keycode(e), timestamp: currTime });
         buffer = buffer.filter(k => currTime - k.timestamp < timeout);
         if (buffer.length > phrase.length) buffer.shift();
-        if (buffer.join('') == phrase) {
+        if (buffer.map(k => k.keycode).join('') == phrase) {
             buffer = [];
             callback();
         }

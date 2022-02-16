@@ -87,7 +87,7 @@ describe('Abstract phrase events', () => {
     describe('Timed events', () => {
         test('Timed Key listener waits for correct string', done => {
             let triggered = false;
-            let phrase = 'secret';
+            let phrase = 'faster';
 
             let keyListener = abs.create({
                 type: 'phrase',
@@ -100,13 +100,9 @@ describe('Abstract phrase events', () => {
 
             setTimeout(() => {
                 triggerKeyboardEventsForString(phrase.substring(phrase.length - 1, phrase.length));
-                if (triggered) throw new Error('Triggered should not be true');
-                
-                triggerKeyboardEventsForString(phrase);
-
                 expect(triggered).toBe(false);
                 done();
-            }, 1500);
+            }, 1250);
         });
     });
 });
