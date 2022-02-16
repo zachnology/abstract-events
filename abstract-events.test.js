@@ -102,7 +102,7 @@ describe('Abstract phrase events', () => {
                 
                 triggerKeyboardEventsForString(phrase);
 
-                expect(triggered).toBe(true);
+                expect(triggered).toBe(false);
                 done();
             }, 1500);
         });

@@ -68,10 +68,10 @@ function createKeyPhraseListener(phrase, callback) {
 
 function createTimedKeyPhraseListener(phrase, timeout, callback) {
     let buffer = [];
-    let lastKeydownEvent = null;
     return function checkPhrase(e) {
-        buffer = lastKeydownEvent && new Date().getTime() - lastKeydownEvent.getTime() > timeout ? [] : buffer;
-        buffer.push(keycode(e));
+        let currTime = new Date().getTime();
+        buffer.push({ keycode: keycode(e), timestamp: new Date() });
+        buffer = buffer.filter(k => currTime - k.timestamp.getTime() < timeout);
         if (buffer.length > phrase.length) buffer.shift();
         if (buffer.join('') == phrase) {
             buffer = [];
