@@ -43,16 +43,14 @@ function createCountListener(count, callback) {
 }
 
 function createTimedCountListener(count, timeout, callback) {
-    let runningCount = 0;
-    let lastTrigger = null;
+    let countTimes = [];
     return function () {
-        runningCount = !lastTrigger || new Date().getTime() - lastTrigger.getTime() > timeout ? 1 : runningCount + 1;
-        if (runningCount >= count) {
-            runningCount = 0;
-            lastTrigger = null;
+        let currTime = new Date();
+        countTimes.push(currTime);
+        countTimes = countTimes.filter(t => currTime - t < timeout);
+        if (countTimes.length >= count) {
+            countTimes = [];
             callback();
-        } else {
-            lastTrigger = new Date();
         }
     } 
 }
@@ -70,15 +68,12 @@ function createTimedKeyPhraseListener(phrase, timeout, callback) {
     let buffer = [];
     return function checkPhrase(e) {
         let currTime = new Date().getTime();
-        buffer.push({ keycode: keycode(e), timestamp: new Date() });
-        buffer = buffer.filter(k => currTime - k.timestamp.getTime() < timeout);
+        buffer.push({ keycode: keycode(e), timestamp: currTime });
+        buffer = buffer.filter(k => currTime - k.timestamp < timeout);
         if (buffer.length > phrase.length) buffer.shift();
         if (buffer.join('') == phrase) {
             buffer = [];
-            lastKeydownEvent = null;
             callback();
-        } else {
-            lastKeydownEvent = new Date();
         }
     }
 }

@@ -31,6 +31,7 @@ describe('Abstract click events', () => {
         test('Click timed abstract event should only fire if all clicks happen within the threshold time', done => {
             document.body.innerHTML = '<button id="button" />'
         
+            let totalCount = 0;
             let testCounter = 0;
             let countListener = abs.create({
                 type: 'count',
@@ -39,15 +40,16 @@ describe('Abstract click events', () => {
             },() => testCounter++);
         
             $('#button').on('click', countListener);
-            $('#button').trigger('click');
-            
-            setTimeout(() => {
-                $('#button').trigger('click');
-                $('#button').trigger('click');
-                expect(testCounter).toBe(0);
-                done();
-            }, 1500);
 
+            let id = setInterval(() => {
+                $('#button').trigger('click');
+                totalCount++;
+                if (totalCount >= 3) {
+                    clearInterval(id);
+                    expect(testCounter).toBe(0);
+                    done();
+                }
+            }, 500);
         });
     });
 });
